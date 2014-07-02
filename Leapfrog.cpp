@@ -70,7 +70,7 @@ int main() {
   Cube Root;
   Root.set_x0(x0);
   Root.set_x(x);
-  // SETTING POSITIONS AND VELOCITIES
+  // SETTING POSITIONS AND VELOCITIES RANDOMLY
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < 3; j++) {
       r[j] = random(r_max,r_min,4);
