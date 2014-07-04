@@ -95,6 +95,7 @@ vector <double> empty(vector <double> a) {
 }
 int main() {
   int n;
+  double t_end;  // here are the changes
   results.setf(ios::fixed);
   results.precision(p);
   energy.setf(ios::fixed);
@@ -103,7 +104,7 @@ int main() {
   init.precision(p);
   cout.setf(ios::fixed);
   cout.precision(p);
-  cin >> n;
+  cin >> n >> t_end; // here are the changes
   Body System[n];
   double dt = 0.0001;
   double r_max = 100, r_min = -100, v_max = 2, v_min = -2, m_max = 700, m_min = 200;
@@ -130,9 +131,9 @@ int main() {
     } 
   }
   print_system(System,n,'r','s');
-  for (int t = 0; t < 100000000; t++) {
+  for (int t = 0; t < t_end; t++) {
+    if (t % 99 == 0) print_system(System,n,'r','r');  // here are the changes
     for (int i = 0; i < n; i++) {
-      if (t % 99 == 0) print_system(System,n,'r','r');
       System[i].v = s_vec(System[i].v,p_vec(System[i].f,dt * 0.5 / System[i].m));
       System[i].r = s_vec(System[i].r,p_vec(System[i].v,dt));
       System[i].f = empty(System[i].f);
